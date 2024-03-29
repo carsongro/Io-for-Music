@@ -29,6 +29,7 @@ struct AppSidebar: View {
                     NavigationLink(value: AppScreen.playlist(playlist)) {
                         PlaylistRow(playlist: playlist)
                     }
+                    .padding(.vertical, -6)
                 }
             }
         }

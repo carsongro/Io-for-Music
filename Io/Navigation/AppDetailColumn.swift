@@ -8,24 +8,17 @@
 import SwiftUI
 
 struct AppDetailColumn: View {
-    @Environment(Navigator.self) private var navigator
+    var screen: AppScreen?
     
     var body: some View {
-        if let screen = navigator.selectedScreen {
+        if let screen {
             screen.destination
         } else {
-            ContentUnavailableView {
-                Label("Browse Music", image: "music.note")
-            } actions: {
-                Button("Browse") {
-                    navigator.selectedScreen = .home
-                }
-            }
+            ContentUnavailableView("Browse Music", systemImage: "music.note", description: Text("Pick items to browse from the list"))
         }
     }
 }
 
 #Preview {
     AppDetailColumn()
-        .environment(Navigator.shared)
 }

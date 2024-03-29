@@ -19,7 +19,7 @@ struct ContentView: View {
                     AppSidebar()
                         .navigationSplitViewColumnWidth(ideal: 250, max: 500)
                 } detail: {
-                    AppDetailColumn()
+                    AppDetailColumn(screen: navigator.selectedScreen)
                 }
                 
                 PlayerView()

@@ -12,7 +12,21 @@ import MusicKit
 final class MusicLibraryManager {
     static let shared = MusicLibraryManager()
     
-    private init() { }
+    private init() { 
+        fetchLibraryPlaylists()
+    }
     
-    var playlists = [Playlist]()
+    var playlists = MusicItemCollection<Playlist>()
+    
+    func fetchLibraryPlaylists() {
+        Task {
+            do {
+                let request = MusicLibraryRequest<Playlist>()
+                let response = try await request.response()
+                playlists = response.items
+            } catch {
+                print("Error fetching library playlists: \(error.localizedDescription)")
+            }
+        }
+    }
 }

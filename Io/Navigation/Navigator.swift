@@ -28,7 +28,7 @@ final class Navigator {
     
     var isWelcomeViewPresented: Bool
     
-    //MARK: - Sidebar Navigation
+    //MARK: - Navigation
     
     var selectedScreen: AppScreen? = .home
 }
