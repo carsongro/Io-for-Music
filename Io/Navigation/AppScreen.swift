@@ -26,4 +26,14 @@ extension AppScreen {
                 .imageScale(.large)
         }
     }
+    
+    @ViewBuilder
+    var destination: some View {
+        switch self {
+        case .home:
+            HomeNavigationStack()
+        case .search:
+            SearchNavigationStack()
+        }
+    }
 }

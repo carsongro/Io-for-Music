@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B8AA49572BB74FF1009CB243 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AA49562BB74FF1009CB243 /* WelcomeView.swift */; };
+		B8AA49712BB7551C009CB243 /* PlaylistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AA49702BB7551C009CB243 /* PlaylistDetailView.swift */; };
+		B8AA49752BB75555009CB243 /* HomeNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AA49742BB75555009CB243 /* HomeNavigationStack.swift */; };
+		B8AA49772BB75562009CB243 /* SearchNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AA49762BB75562009CB243 /* SearchNavigationStack.swift */; };
 		B8BD02EB2BB6580C0030DA0B /* IoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD02EA2BB6580C0030DA0B /* IoApp.swift */; };
 		B8BD02ED2BB6580C0030DA0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD02EC2BB6580C0030DA0B /* ContentView.swift */; };
 		B8BD02EF2BB6580D0030DA0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8BD02EE2BB6580D0030DA0B /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 
 /* Begin PBXFileReference section */
 		B8AA49562BB74FF1009CB243 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B8AA49702BB7551C009CB243 /* PlaylistDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailView.swift; sourceTree = "<group>"; };
+		B8AA49742BB75555009CB243 /* HomeNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStack.swift; sourceTree = "<group>"; };
+		B8AA49762BB75562009CB243 /* SearchNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationStack.swift; sourceTree = "<group>"; };
 		B8BD02E72BB6580C0030DA0B /* Io.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Io.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BD02EA2BB6580C0030DA0B /* IoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoApp.swift; sourceTree = "<group>"; };
 		B8BD02EC2BB6580C0030DA0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,12 +51,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B8AA49552BB74FEA009CB243 /* Welcome */ = {
+		B8AA496F2BB7550A009CB243 /* Playlist */ = {
 			isa = PBXGroup;
 			children = (
-				B8AA49562BB74FF1009CB243 /* WelcomeView.swift */,
+				B8AA49702BB7551C009CB243 /* PlaylistDetailView.swift */,
 			);
-			path = Welcome;
+			path = Playlist;
+			sourceTree = "<group>";
+		};
+		B8AA49722BB75540009CB243 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B8AA49742BB75555009CB243 /* HomeNavigationStack.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B8AA49732BB75542009CB243 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B8AA49762BB75562009CB243 /* SearchNavigationStack.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		B8BD02DE2BB6580C0030DA0B = {
@@ -77,9 +99,12 @@
 				B8BD02F02BB6580D0030DA0B /* Preview Content */,
 				B8BD02EA2BB6580C0030DA0B /* IoApp.swift */,
 				B8BD02EC2BB6580C0030DA0B /* ContentView.swift */,
-				B8AA49552BB74FEA009CB243 /* Welcome */,
+				B8AA49562BB74FF1009CB243 /* WelcomeView.swift */,
 				B8BD02FB2BB740B10030DA0B /* Navigation */,
 				B8BD02FC2BB740CF0030DA0B /* Player */,
+				B8AA49722BB75540009CB243 /* Home */,
+				B8AA49732BB75542009CB243 /* Search */,
+				B8AA496F2BB7550A009CB243 /* Playlist */,
 			);
 			path = Io;
 			sourceTree = "<group>";
@@ -182,11 +207,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8BD02ED2BB6580C0030DA0B /* ContentView.swift in Sources */,
+				B8AA49752BB75555009CB243 /* HomeNavigationStack.swift in Sources */,
 				B8BD03082BB747300030DA0B /* AppScreen.swift in Sources */,
 				B8BD02EB2BB6580C0030DA0B /* IoApp.swift in Sources */,
+				B8AA49712BB7551C009CB243 /* PlaylistDetailView.swift in Sources */,
 				B8AA49572BB74FF1009CB243 /* WelcomeView.swift in Sources */,
 				B8BD03002BB7429F0030DA0B /* AppDetailColumn.swift in Sources */,
 				B8BD03042BB744760030DA0B /* PlayerView.swift in Sources */,
+				B8AA49772BB75562009CB243 /* SearchNavigationStack.swift in Sources */,
 				B8BD02FE2BB742960030DA0B /* AppSidebar.swift in Sources */,
 				B8BD03062BB746F50030DA0B /* Navigator.swift in Sources */,
 			);
@@ -327,6 +355,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Io uses Apple Music to help you listen to music.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -354,6 +383,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Io uses Apple Music to help you listen to music.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

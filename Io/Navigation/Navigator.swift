@@ -30,7 +30,7 @@ final class Navigator {
     
     //MARK: - Sidebar Navigation
     
-    var selectedScreen: AppScreen?
+    var selectedScreen: AppScreen? = .home
     var selectedPlaylist: Playlist?
     
     
