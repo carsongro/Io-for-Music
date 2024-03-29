@@ -12,7 +12,23 @@ import MusicKit
 final class Navigator {
     static let shared = Navigator()
     
-    private init() { }
+    private init() {
+        let authorizationStatus = MusicAuthorization.currentStatus
+        musicAuthorizationStatus = authorizationStatus
+        isWelcomeViewPresented = (authorizationStatus != .authorized)
+    }
+    
+    //MARK: - MusicKit Authorization
+    
+    var musicAuthorizationStatus: MusicAuthorization.Status {
+        didSet {
+            isWelcomeViewPresented = (musicAuthorizationStatus != .authorized)
+        }
+    }
+    
+    var isWelcomeViewPresented: Bool
+    
+    //MARK: - Sidebar Navigation
     
     var selectedScreen: AppScreen?
     var selectedPlaylist: Playlist?

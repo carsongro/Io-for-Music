@@ -11,16 +11,20 @@ struct ContentView: View {
     @State private var navigator = Navigator.shared
     
     var body: some View {
-        VStack {
-            NavigationSplitView {
-                AppSidebar()
-            } detail: {
-                AppDetailColumn()
+        if navigator.isWelcomeViewPresented {
+            WelcomeView(musicAuthorizationStatus: $navigator.musicAuthorizationStatus)
+        } else {
+            VStack {
+                NavigationSplitView {
+                    AppSidebar()
+                } detail: {
+                    AppDetailColumn()
+                }
+                
+                PlayerView()
             }
-            
-            PlayerView()
+            .environment(navigator)
         }
-        .environment(navigator)
     }
 }
 

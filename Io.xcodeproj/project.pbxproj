@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8AA49572BB74FF1009CB243 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AA49562BB74FF1009CB243 /* WelcomeView.swift */; };
 		B8BD02EB2BB6580C0030DA0B /* IoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD02EA2BB6580C0030DA0B /* IoApp.swift */; };
 		B8BD02ED2BB6580C0030DA0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD02EC2BB6580C0030DA0B /* ContentView.swift */; };
 		B8BD02EF2BB6580D0030DA0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8BD02EE2BB6580D0030DA0B /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B8AA49562BB74FF1009CB243 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B8BD02E72BB6580C0030DA0B /* Io.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Io.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BD02EA2BB6580C0030DA0B /* IoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoApp.swift; sourceTree = "<group>"; };
 		B8BD02EC2BB6580C0030DA0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B8AA49552BB74FEA009CB243 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				B8AA49562BB74FF1009CB243 /* WelcomeView.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		B8BD02DE2BB6580C0030DA0B = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +77,7 @@
 				B8BD02F02BB6580D0030DA0B /* Preview Content */,
 				B8BD02EA2BB6580C0030DA0B /* IoApp.swift */,
 				B8BD02EC2BB6580C0030DA0B /* ContentView.swift */,
+				B8AA49552BB74FEA009CB243 /* Welcome */,
 				B8BD02FB2BB740B10030DA0B /* Navigation */,
 				B8BD02FC2BB740CF0030DA0B /* Player */,
 			);
@@ -173,6 +184,7 @@
 				B8BD02ED2BB6580C0030DA0B /* ContentView.swift in Sources */,
 				B8BD03082BB747300030DA0B /* AppScreen.swift in Sources */,
 				B8BD02EB2BB6580C0030DA0B /* IoApp.swift in Sources */,
+				B8AA49572BB74FF1009CB243 /* WelcomeView.swift in Sources */,
 				B8BD03002BB7429F0030DA0B /* AppDetailColumn.swift in Sources */,
 				B8BD03042BB744760030DA0B /* PlayerView.swift in Sources */,
 				B8BD02FE2BB742960030DA0B /* AppSidebar.swift in Sources */,
