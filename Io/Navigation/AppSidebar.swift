@@ -9,13 +9,26 @@ import SwiftUI
 
 struct AppSidebar: View {
     @Environment(Navigator.self) private var navigator
+    @Environment(MusicLibraryManager.self) private var musicLibraryManager
     
     var body: some View {
         @Bindable var navigator = navigator
         List(selection: $navigator.selectedScreen) {
-            ForEach(AppScreen.allCases) { screen in
-                NavigationLink(value: screen) {
-                    screen.label
+            Section {
+                NavigationLink(value: AppScreen.home) {
+                    AppScreen.home.label
+                }
+                
+                NavigationLink(value: AppScreen.search) {
+                    AppScreen.search.label
+                }
+            }
+            
+            Section("Library") {
+                ForEach(musicLibraryManager.playlists) { playlist in
+                    NavigationLink(value: AppScreen.playlist(playlist)) {
+                        PlaylistRow(playlist: playlist)
+                    }
                 }
             }
         }
@@ -25,4 +38,5 @@ struct AppSidebar: View {
 #Preview {
     AppSidebar()
         .environment(Navigator.shared)
+        .environment(MusicLibraryManager.shared)
 }

@@ -25,6 +25,7 @@ struct ContentView: View {
                 PlayerView()
             }
             .environment(navigator)
+            .environment(MusicLibraryManager.shared)
         }
     }
 }

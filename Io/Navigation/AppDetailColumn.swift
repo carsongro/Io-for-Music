@@ -13,8 +13,6 @@ struct AppDetailColumn: View {
     var body: some View {
         if let screen = navigator.selectedScreen {
             screen.destination
-        } else if let playlist = navigator.selectedPlaylist {
-            PlaylistDetailView(playlist: playlist)
         } else {
             ContentUnavailableView {
                 Label("Browse Music", image: "music.note")

@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import MusicKit
 
-enum AppScreen: Codable, Hashable, Identifiable, CaseIterable {
+enum AppScreen: Codable, Hashable, Identifiable {
     case home
     case search
+    case playlist(Playlist)
     
     var id: AppScreen { self }
 }
@@ -24,6 +26,8 @@ extension AppScreen {
         case .search:
             Label("Search", systemImage: "magnifyingglass")
                 .imageScale(.large)
+        case .playlist(let playlist):
+            PlaylistRow(playlist: playlist)
         }
     }
     
@@ -34,6 +38,8 @@ extension AppScreen {
             HomeNavigationStack()
         case .search:
             SearchNavigationStack()
+        case .playlist(let playlist):
+            PlaylistDetailView(playlist: playlist)
         }
     }
 }
