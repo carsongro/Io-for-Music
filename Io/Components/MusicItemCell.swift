@@ -20,7 +20,7 @@ struct MusicItemCell: View {
             if let artwork {
                 VStack {
                     Spacer()
-                    ArtworkImage(artwork, width: 40)
+                    ArtworkImage(artwork, width: 50)
                         .cornerRadius(6)
                     Spacer()
                 }

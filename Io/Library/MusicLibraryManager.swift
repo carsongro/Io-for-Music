@@ -21,7 +21,8 @@ final class MusicLibraryManager {
     func fetchLibraryPlaylists() {
         Task {
             do {
-                let request = MusicLibraryRequest<Playlist>()
+                var request = MusicLibraryRequest<Playlist>()
+                request.sort(by: \.lastPlayedDate, ascending: true)
                 let response = try await request.response()
                 playlists = response.items
             } catch {

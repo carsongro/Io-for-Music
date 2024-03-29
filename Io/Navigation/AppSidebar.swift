@@ -25,6 +25,7 @@ struct AppSidebar: View {
             }
             
             Section("Library") {
+                //TODO: ADD GRID VIEW
                 ForEach(musicLibraryManager.playlists) { playlist in
                     NavigationLink(value: AppScreen.playlist(playlist)) {
                         PlaylistRow(playlist: playlist)
