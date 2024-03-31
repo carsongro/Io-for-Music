@@ -14,25 +14,24 @@ struct PlaylistDetailView: View {
     @State private var detailedPlaylist: Playlist?
     
     var body: some View {
-        SubscriptionOfferableView(itemID: playlist.id, messageIdentifier: .playMusic) {
-            Group {
-                if let detailedPlaylist {
-                    List {
-                        Section { } header: {
-                            CollectionHeader(
-                                artwork: detailedPlaylist.artwork,
-                                title: detailedPlaylist.name,
-                                ownerName: detailedPlaylist.curatorName,
-                                description: detailedPlaylist.description,
-                                itemCount: detailedPlaylist.tracks?.count
-                            )
-                        }
+        Group {
+            if let detailedPlaylist {
+                List {
+                    Section { } header: {
+                        CollectionHeader(
+                            artwork: detailedPlaylist.artwork,
+                            title: detailedPlaylist.name,
+                            ownerName: detailedPlaylist.curatorName,
+                            description: detailedPlaylist.description,
+                            itemCount: detailedPlaylist.tracks?.count
+                        )
                     }
-                } else {
-                    Color.clear
                 }
+            } else {
+                Color.clear
             }
         }
+        .canOfferSubscription(for: playlist.id, messageIdentifier: .playMusic)
         .task { await getDetailedPlaylist() }
     }
     

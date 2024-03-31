@@ -8,14 +8,16 @@
 import SwiftUI
 import MusicKit
 
-struct SubscriptionOfferableView<Content: View>: View {
-    let itemID: MusicItemID?
-    let messageIdentifier: MusicSubscriptionOffer.MessageIdentifier
-    let content: Content
+public struct SubscriptionOfferableView<Content: View>: View {
+    private let itemID: MusicItemID?
+    private let messageIdentifier: MusicSubscriptionOffer.MessageIdentifier
+    private let content: Content
     
     @State private var musicSubscription: MusicSubscription?
     @State private var isShowingSubscriptionOffer = false
     @State private var subscriptionOfferOptions: MusicSubscriptionOffer.Options = .default
+    
+    private var disabled = false
     
     init(
         itemID: MusicItemID? = nil,
@@ -32,17 +34,12 @@ struct SubscriptionOfferableView<Content: View>: View {
         return canBecomeSubscriber
     }
     
-    var body: some View {
+    public var body: some View {
         Group {
             if shouldOfferSubscription {
                 content
-                    .overlay {
-                        Color.clear
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .onTapGesture {
-                                handleSubscriptionOfferButtonSelected()
-                            }
-                    }
+                    .disabled(disabled)
+                    .onTapGesture(perform: handleSubscriptionOfferSelected)
             } else {
                 content
             }
@@ -55,25 +52,42 @@ struct SubscriptionOfferableView<Content: View>: View {
         .musicSubscriptionOffer(isPresented: $isShowingSubscriptionOffer, options: subscriptionOfferOptions)
     }
     
-    private var subscriptionOfferButton: some View {
-        Button(action: handleSubscriptionOfferButtonSelected) {
-            HStack {
-                Image(systemName: "applelogo")
-                Text("Join")
-            }
-            .frame(maxWidth: 200)
-        }
-        .buttonStyle(.borderedProminent)
-    }
-    
     /// Computes the presentation state for a subscription offer.
-    private func handleSubscriptionOfferButtonSelected() {
+    private func handleSubscriptionOfferSelected() {
         subscriptionOfferOptions.messageIdentifier = messageIdentifier
         subscriptionOfferOptions.itemID = itemID
         isShowingSubscriptionOffer = true
     }
+    
+    /// Can disable the underlying content if a subsription should be offered.
+    /// - Parameter disabled: A boolean indicating whether the underlying content is disabled or not.
+    /// - Returns: `SubscriptionOfferableView`
+    public func contentDisabled(_ disabled: Bool = true) -> SubscriptionOfferableView {
+        var view = self
+        view.disabled = disabled
+        return view
+    }
 }
 
-#Preview {
-    SubscriptionOfferableView { }
+public struct SubscriptionOfferableModifier: ViewModifier {
+    let itemID: MusicItemID?
+    let messageIdentifier: MusicSubscriptionOffer.MessageIdentifier
+    let disableContent: Bool
+    
+    public func body(content: Content) -> some View {
+        SubscriptionOfferableView(itemID: itemID, messageIdentifier: messageIdentifier) {
+            content
+        }
+        .contentDisabled(disableContent)
+    }
+}
+
+extension View {
+    func canOfferSubscription(
+        for itemID: MusicItemID? = nil,
+        messageIdentifier: MusicSubscriptionOffer.MessageIdentifier = .join,
+        disableContent: Bool = false
+    ) -> some View {
+        modifier(SubscriptionOfferableModifier(itemID: itemID, messageIdentifier: messageIdentifier, disableContent: disableContent))
+    }
 }
